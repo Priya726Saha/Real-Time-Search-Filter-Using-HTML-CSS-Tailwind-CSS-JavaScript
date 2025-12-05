@@ -51,7 +51,16 @@ function debounce(fn, delay) {
 // ---------- RENDER USERS ----------
 function ShowUsers(arr) {
     const container = document.querySelector(".cards");
-    container.innerHTML = "";  // keep as you wanted
+    container.innerHTML = ""; 
+
+    if(arr.length === 0){
+        const msg = document.createElement("p");
+            msg.textContent = "No User Found";
+            msg.classList.add("text-center", "text-gray-500", "text-xl", "mt-5");
+            container.appendChild(msg);
+            return;
+        
+    }
 
     const fragment = document.createDocumentFragment();
 
@@ -107,3 +116,4 @@ inp.addEventListener("input", debounce(function () {
 
     ShowUsers(newUsers);
 }, 300));   // 300ms delay
+
